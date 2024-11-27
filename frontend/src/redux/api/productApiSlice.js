@@ -19,7 +19,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
 
     allProducts: builder.query({
       query: () => `${PRODUCT_URL}/allProducts`,
-      providesTags: ['Product'], // Associate this query with the 'Products' tag
+      providesTags: ['Products'], // Associate this query with the 'Products' tag
     }),
 
     getProductDetails: builder.query({
