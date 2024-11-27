@@ -20,7 +20,7 @@ const ProductTabs = ({ loadingProductReview, userInfo, submitHandler, rating, se
 
   return (
     <div className="flex flex-col md:flex-row">
-      <section className="mr-[5rem]">
+      <section className="mr-[1rem]">
         <div className={`flex-1 p-4 cursor-pointer text-lg ${activeTab === 1 ? 'font-bold' : ''}`} onClick={() => handleTabClick(1)}>
           Write Your Review
         </div>
@@ -104,7 +104,7 @@ const ProductTabs = ({ loadingProductReview, userInfo, submitHandler, rating, se
 
       <section>
         {activeTab === 3 && (
-          <section className="ml-[4rem] flex flex-wrap">
+          <section className="ml-[4rem] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
             {!data ? (
               <Loader />
             ) : (

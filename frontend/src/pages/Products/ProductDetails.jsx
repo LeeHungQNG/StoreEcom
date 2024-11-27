@@ -10,6 +10,7 @@ import { useState } from 'react';
 import moment from 'moment';
 import Ratings from './Ratings';
 import ProductTabs from './ProductTabs';
+import { addToCart } from '../../redux/features/cart/cartSlice';
 
 const ProductDetails = () => {
   const { id: productId } = useParams();
@@ -61,7 +62,7 @@ const ProductDetails = () => {
         <Message variant="danger">{error?.data?.message || error.message}</Message>
       ) : (
         <>
-          <div className="flex flex-wrap relative items-between mt-[2rem] ml-[10rem]">
+          <div className="grid grid-cols-1 gap-2 xl:grid-cols-2 xl:gap-3 relative items-between mt-[2rem] ml-[10rem]">
             <div>
               <img src={product.image} alt={product.name} className="w-full xl:w-[50rem] lg:w-[45rem] md:w-[30rem] sm:w-[20rem] mr-[2rem]" />
 
@@ -100,7 +101,7 @@ const ProductDetails = () => {
                 </div>
               </div>
 
-              <div className="flex justify-between flex-wrap">
+              <div className="flex justify-start gap-6">
                 <Ratings value={product.rating} text={`${product.numReviews} reviews`} />
 
                 {product.countInStock > 0 && (
@@ -117,28 +118,23 @@ const ProductDetails = () => {
               </div>
 
               <div className="btn-container">
-                <button
-                  // onClick={addToCartHandler}
-                  disabled={product.countInStock === 0}
-                  className="bg-pink-600 text-white py-2 px-4 rounded-lg mt-4 md:mt-0"
-                >
+                <button onClick={addToCartHandler} disabled={product.countInStock === 0} className="bg-pink-600 text-white py-2 px-4 rounded-lg mt-4 md:mt-0">
                   Add To Cart
                 </button>
               </div>
             </div>
-
-            <div className="mt-[5rem] container flex flex-wrap items-start justify-between">
-              <ProductTabs
-                loadingProductReview={loadingProductReview}
-                userInfo={userInfo}
-                submitHandler={submitHandler}
-                rating={rating}
-                setRating={setRating}
-                comment={comment}
-                setComment={setComment}
-                product={product}
-              />
-            </div>
+          </div>
+          <div className="mt-[5rem] ml-[10rem]">
+            <ProductTabs
+              loadingProductReview={loadingProductReview}
+              userInfo={userInfo}
+              submitHandler={submitHandler}
+              rating={rating}
+              setRating={setRating}
+              comment={comment}
+              setComment={setComment}
+              product={product}
+            />
           </div>
         </>
       )}
