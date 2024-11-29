@@ -5,7 +5,7 @@ import Loader from './Loader';
 
 const Header = () => {
   const { data, isLoading, error } = useGetTopProductsQuery();
-  console.log('🚀 ~ Header ~ data:', data);
+ 
   if (isLoading) {
     return <Loader />;
   }

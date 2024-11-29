@@ -5,7 +5,7 @@ import moment from 'moment/moment';
 
 const AllProducts = () => {
   const { data: products, isLoading, isError } = useAllProductsQuery();
-  console.log('🚀 ~ AllProducts ~ products:', products);
+ 
 
   if (isLoading) {
     return <div>Loading...</div>;
